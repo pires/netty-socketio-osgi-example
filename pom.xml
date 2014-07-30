@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.pires</groupId>
+  <artifactId>nettyio-parent</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+    <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+    <build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
+    <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
+    <java.version>1.7</java.version>
+    <slf4j.version>1.7.5</slf4j.version>
+
+    <!-- JSON -->
+    <json.version>20140107</json.version>
+    <jackson.version>2.4.1</jackson.version>
+
+    <!-- OSGi stuff -->
+    <osgi.version>5.0.0</osgi.version>
+    <scr-annotations.version>1.9.8</scr-annotations.version>
+
+    <!-- Netty.IO -->
+    <netty.version>4.0.21.Final</netty.version>
+
+    <!-- Hazelcast -->
+    <hazelcast.version>3.2.4</hazelcast.version>
+
+    <!-- JSON -->
+    <json.version>20140107</json.version>
+    <jackson.version>2.4.1</jackson.version>
+
+    <!-- Plug-ins -->
+    <license.plugin.version>2.6</license.plugin.version>
+    <scr-plugin.version>1.17.0</scr-plugin.version>
+    <bnd-plugin.version>2.4.0</bnd-plugin.version>    
+  </properties>
+
+  <modules>
+    <module>feature-hazelcast</module>
+    <module>feature-jackson</module>
+    <module>feature-socketio</module>
+    <module>app</module>        
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- OSGi -->
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.core</artifactId>
+        <version>${osgi.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.compendium</artifactId>
+        <version>${osgi.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.enterprise</artifactId>
+        <version>${osgi.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- SCR -->
+      <dependency>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>org.apache.felix.scr.annotations</artifactId>
+        <version>${scr-annotations.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- Utils & Logging -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- JAXRS & JSON -->
+      <dependency>
+        <groupId>com.fasterxml.jackson.jaxrs</groupId>
+        <artifactId>jackson-jaxrs-json-provider</artifactId>
+        <version>${jackson.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>${jackson.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>${json.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- Hazelcast distributed cache-->
+      <dependency>
+        <groupId>com.hazelcast</groupId>
+        <artifactId>hazelcast</artifactId>
+        <version>${hazelcast.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.hazelcast</groupId>
+        <artifactId>hazelcast-client</artifactId>
+        <version>${hazelcast.version}</version>
+      </dependency>
+
+      <!-- Netty.IO -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-buffer</artifactId>
+        <version>${netty.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-common</artifactId>
+        <version>${netty.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport</artifactId>
+        <version>${netty.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-handler</artifactId>
+        <version>${netty.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-http</artifactId>
+        <version>${netty.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec</artifactId>
+        <version>${netty.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.17</version>
+          <configuration>
+            <argLine>-Dfile.encoding=utf-8</argLine>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-scr-plugin</artifactId>
+          <version>${scr-plugin.version}</version>
+          <executions>
+            <execution>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>scr</goal>
+              </goals>
+              <configuration>
+                <specVersion>1.2</specVersion>
+                <strictMode>false</strictMode>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.8</version>
+          <executions>
+            <execution>
+              <id>attach-artifacts</id>
+              <phase>package</phase>
+              <goals>
+                <goal>attach-artifact</goal>
+              </goals>
+              <configuration>
+                <artifacts>
+                  <artifact>
+                    <file>${project.build.outputDirectory}/features.xml</file>
+                    <type>xml</type>
+                    <classifier>features</classifier>
+                  </artifact>
+                </artifacts>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>com.mycila</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <version>${license.plugin.version}</version>
+        <inherited>false</inherited>
+        <configuration>
+          <aggregate>true</aggregate>
+          <header>${basedir}/LICENSE</header>
+          <strictCheck>true</strictCheck>
+          <includes>
+            <include>**/src/main/java/**/*.java</include>
+            <include>**/src/test/java/**/*.java</include>
+            <include>**/src/main/**/*.xml</include>
+            <include>**/src/test/**/*.xml</include>
+            <modelVersion>4.0.0</modelVersion>
+          </includes>
+          <useDefaultExcludes>true</useDefaultExcludes>
+          <encoding>UTF-8</encoding>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>process-test-resources</phase>
+            <goals>
+              <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <optimize>true</optimize>
+          <debug>true</debug>
+          <compilerArgument>-proc:none</compilerArgument>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>${bnd-plugin.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <_failok>true</_failok>
+            <_removeheaders>Import-Service</_removeheaders>
+            <Bundle-Name>${project.name}</Bundle-Name>
+            <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+            <Implementation-Version>${project.version}</Implementation-Version>
+            <Import-Package>${osgi.import.pkg}</Import-Package>
+            <Export-Package>${osgi.export.pkg}</Export-Package>
+            <Private-Package>${osgi.private.pkg}</Private-Package>
+            <DynamicImport-Package>${osgi.dynamic.pkg}</DynamicImport-Package>
+            <Require-Bundle>${osgi.require.bundle}</Require-Bundle>
+            <Export-Service>${osgi.services.export}</Export-Service>
+            <Embed-Dependency>${osgi.embed.dependency}</Embed-Dependency>
+            <Embed-Transitive>${osgi.embed.transitive}</Embed-Transitive>
+            <Require-Bundle>${osgi.require.bundle}</Require-Bundle>
+            <Require-Capability>${osgi.capabilities.require}</Require-Capability>
+            <Provide-Capability>${osgi.capabilities.provide}</Provide-Capability>
+            <Service-Component>${osgi.service.component}</Service-Component>
+            <Meta-Persistence>${osgi.meta.persistence}</Meta-Persistence>
+            <Fragment-Host>${osgi.fragment.host}</Fragment-Host>
+          </instructions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+              <encoding>${project.build.sourceEncoding}</encoding>
+              <resources>
+                <resource>
+                  <directory>src/main/resources</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>default</id>
+      <url>https://oss.sonatype.org/content/groups/public</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>JBOSS</id>
+      <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <repositories>
+    <repository>
+      <id>default</id>
+      <url>https://oss.sonatype.org/content/groups/public</url>
+    </repository>
+    <repository>
+      <id>JBOSS</id>
+      <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+    </repository>
+  </repositories>
+
+</project>

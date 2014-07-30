@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.github.pires</groupId>
+    <artifactId>nettyio-parent</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>netty-socketio-app</artifactId>
+  <name>Netty Socket.IO app</name>
+  <packaging>bundle</packaging>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.corundumstudio.socketio</groupId>
+      <artifactId>netty-socketio</artifactId>
+      <version>1.7.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.scr.annotations</artifactId>
+    </dependency>
+  </dependencies>
+
+  <properties>
+    <osgi.import.pkg>*</osgi.import.pkg>
+    <osgi.export.pkg>com.github.pires.app</osgi.export.pkg>
+    <osgi.private.pkg>com.github.pires.app.impl</osgi.private.pkg>
+    <osgi.service.component>OSGI-INF/*</osgi.service.component>
+  </properties>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-scr-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>  
+
+</project>

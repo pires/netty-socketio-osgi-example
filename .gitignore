@@ -1,0 +1,4 @@
+/app/target/
+/feature-hazelcast/target/
+/feature-jackson/target/
+/feature-socketio/target/
